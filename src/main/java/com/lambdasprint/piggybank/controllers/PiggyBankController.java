@@ -112,12 +112,23 @@ public class PiggyBankController {
             System.out.println("Money not available");
             return new ResponseEntity<>(HttpStatus.OK);
         } else {
-            numberOfDollars -= numberOfOneDollarCost;
-            numberOfQuarters -= numberOfQuarterCost;
+            if(numberOfDollars > numberOfOneDollarCost){
+                numberOfDollars -= numberOfOneDollarCost;
+            }
+            if(numberOfQuarters > numberOfQuarterCost){
+                numberOfQuarters-= numberOfQuarterCost;
+            } else {
+                numberOfQuarterCost -= numberOfQuarters;
+                numberOfQuarters = 0;
+                int remainder = 0;
+                numberOfDimeCost += (int)(numberOfQuarterCost*25)/10;
+                remainder = (numberOfQuarterCost*25) % 10;
+                numberOfNickelCost += remainder/5;
+            }
             numberOfDimes -= numberOfDimeCost;
             numberOfNickels -= numberOfNickelCost;
             numberOfPennies -= numberOfPennyCost;
-            System.out.println(amount + "Was taken out of your piggy bank. " \n +"Dollars: " + numberOfDollars + " Quarters: " + numberOfQuarters + " Dimes: " + numberOfDimes + " Nickels: " + numberOfNickels + " Pennies: " + numberOfPennies);
+            System.out.println(amount + "Was taken out of your piggy bank. Dollars: " + numberOfDollars + " Quarters: " + numberOfQuarters + " Dimes: " + numberOfDimes + " Nickels: " + numberOfNickels + " Pennies: " + numberOfPennies);
             return new ResponseEntity<>(HttpStatus.OK);
 
         }
