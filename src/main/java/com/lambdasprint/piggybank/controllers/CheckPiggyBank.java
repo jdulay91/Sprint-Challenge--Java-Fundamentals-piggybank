@@ -4,5 +4,5 @@ import com.lambdasprint.piggybank.models.PiggyBank;
 
 public interface CheckPiggyBank {
 
-    boolean test(PiggyBank a)
+    boolean test(PiggyBank a);
 }

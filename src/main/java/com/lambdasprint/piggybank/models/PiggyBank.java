@@ -1,12 +1,9 @@
 package com.lambdasprint.piggybank.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
-@Table(name = "coin")
+@Table(name = "coins")
 public class PiggyBank {
 
     @Id
