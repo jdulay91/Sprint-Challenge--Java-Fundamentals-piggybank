@@ -66,7 +66,8 @@ public class PiggyBankController {
         getTotalCount(dollarList,"Dollar");
 
         System.out.println("The piggy Bank holds " + total);
-        return new ResponseEntity<>(dollarList, HttpStatus.OK);
+        return new ResponseEntity<>( HttpStatus.OK);
     }
+
 
 }
